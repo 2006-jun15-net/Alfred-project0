@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BusinessLogicLib
 {
     class Program
     {
+        //create a data storage for customers
+        static List<Customer> customers = new List<Customer>();
+
         static void Main(string[] args)
         {
             Product p1 = new Product("milk");
             Product p2 = new Product("bananas");
             Product p3 = new Product("brocolli");
             Product p4 = new Product("yogurt");
-            int[] arr = { 1, 2 };
-            Array.Sort(arr);
+           
+            
 
            
 
@@ -41,14 +45,66 @@ namespace BusinessLogicLib
 
             Store store2 = new Store("London", inventory2);
 
-           
+
+            //user interface
+            //entering customers in the system
+
+   
+            while (true)
+            {
+                Console.WriteLine("welcome to the store application. Enter 1 to add new customer, 0 to stopping adding or 3 to search a customer");
+                string input = Console.ReadLine();
+                int option = int.Parse(input);
+                if(option == 1)
+                {
+                    Console.WriteLine("Enter your first and last name");
+
+                    string firstNmae = Console.ReadLine();
+                    string lastName = Console.ReadLine();
+
+                    //creating a customer object
+                    Customer customer = new Customer(firstNmae, lastName);
+
+                    //adding customers in the storage, if the customer is not in the system, go ahead and add them, otherwise they
+                    //are already in the system.
+                    if(searchCustomer(customer) == false)
+                    {
+                        customers.Add(customer);
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Customer already in the system");
+                    }
+                    
+
+                }
+                
+                else
+                {
+                    break;
+                }
+
+                
+            }
+
             
 
+        }
 
+        //method to search customers in the system.
+        public static bool searchCustomer(Customer customer)
+        {
+            foreach(Customer cust in customers)
+            {
+                if(customer.LastName.Equals(cust.LastName))
+                {
+                    return true;
 
-
-
-
+                }
+            }
+            return false;
+            
         }
     }
 }
