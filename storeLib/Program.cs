@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BusinessLogicLib
 {
@@ -10,6 +11,8 @@ namespace BusinessLogicLib
             Product p2 = new Product("bananas");
             Product p3 = new Product("brocolli");
             Product p4 = new Product("yogurt");
+            int[] arr = { 1, 2 };
+            Array.Sort(arr);
 
            
 
@@ -38,7 +41,10 @@ namespace BusinessLogicLib
 
             Store store2 = new Store("London", inventory2);
 
+           
             
+
+
 
 
 
