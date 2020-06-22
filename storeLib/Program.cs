@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace storeLib
+namespace BusinessLogicLib
 {
     class Program
     {
