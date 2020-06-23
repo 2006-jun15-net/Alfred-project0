@@ -9,6 +9,9 @@ namespace BusinessLogicLib
         //create a data storage for customers
         static List<Customer> customers = new List<Customer>();
 
+        //a list of stores
+        static List<Store> stores = new List<Store>();
+
         static void Main(string[] args)
         {
             Product p1 = new Product("milk");
@@ -28,7 +31,7 @@ namespace BusinessLogicLib
             inventory1.Add(p3);
             inventory1.Add(p4);
 
-            Store store1 = new Store("New York", inventory1);
+            Store Walmart = new Store("New York", inventory1);
 
             //meat prodcuts
             Product p5 = new Product("liver");
@@ -43,13 +46,18 @@ namespace BusinessLogicLib
             inventory2.Add(p7);
             inventory2.Add(p8);
 
-            Store store2 = new Store("London", inventory2);
+            Store Kroger = new Store("London", inventory2);
 
+            //adding stores to the storeList
+            stores.Add(Walmart);
+            stores.Add(Kroger);
 
+            placeOrder();
+            
+
+            /*
             //user interface
             //entering customers in the system
-
-   
             while (true)
             {
                 Console.WriteLine("welcome to the store application. Enter 1 to add new customer, 0 to stopping adding or 3 to search a customer");
@@ -84,13 +92,13 @@ namespace BusinessLogicLib
                 {
                     break;
                 }
-
-                
+ 
             }
-
+            */
             
 
         }
+
 
         //method to search customers in the system.
         public static bool searchCustomer(Customer customer)
@@ -105,6 +113,39 @@ namespace BusinessLogicLib
             }
             return false;
             
+        }
+
+        //placing an order
+        public static void placeOrder()
+        {
+            Console.WriteLine("Select a store from the options below");
+            display(); //displaying the stores
+
+            //reading the input from the user
+            string selectedStore = Console.ReadLine();
+
+            foreach(Store store in stores)
+            {
+                if(selectedStore.Equals(store.Name))
+                {
+                    //Console.WriteLine(store.Inventory);
+                    store.Inventory.ForEach(product => Console.WriteLine(product.Name));
+                }
+            }
+
+
+        }
+
+        //displaying store locations
+        public static void display()
+        {
+            foreach(Store store in stores)
+            {
+                Console.WriteLine(store.Name);
+
+            }
+
+
         }
     }
 }
