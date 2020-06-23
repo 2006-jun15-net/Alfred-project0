@@ -10,16 +10,19 @@ namespace BusinessLogicLib
         public List<Customer> Customers { get; }
 
 
-        public List<Store> Stores { get; }
+        public List<Store> Stores { get; set; }
 
         public Data()
         {
+            //initializing a store list
+            this.Stores = new List<Store>();
+
             Product p1 = new Product("milk");
             Product p2 = new Product("bananas");
             Product p3 = new Product("brocolli");
             Product p4 = new Product("yogurt");
 
-            //a list of inventory
+            //inventory 1
             List<Product> inventory1 = new List<Product>();
             inventory1.Add(p1);
             inventory1.Add(p2);
@@ -34,6 +37,7 @@ namespace BusinessLogicLib
             Product p7 = new Product("beef");
             Product p8 = new Product("chicken");
 
+            //inventory2
             List<Product> inventory2 = new List<Product>();
             inventory2.Add(p5);
             inventory2.Add(p6);
@@ -41,6 +45,8 @@ namespace BusinessLogicLib
             inventory2.Add(p8);
 
             Store Kroger = new Store("London", inventory2);
+
+           
 
             //adding stores to the storeList
             Stores.Add(Walmart);
