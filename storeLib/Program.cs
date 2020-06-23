@@ -55,7 +55,7 @@ namespace BusinessLogicLib
             placeOrder();
             
 
-            /*
+            
             //user interface
             //entering customers in the system
             while (true)
@@ -94,7 +94,7 @@ namespace BusinessLogicLib
                 }
  
             }
-            */
+            
             
 
         }
