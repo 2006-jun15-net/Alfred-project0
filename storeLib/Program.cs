@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace BusinessLogicLib
+namespace ConsoleApp
 {
     class Program
     {
@@ -80,6 +80,7 @@ namespace BusinessLogicLib
         }
 
         //placing an order
+       
         public static void placeOrder()
         {
             Console.WriteLine("Select a store from the options below:");
@@ -112,33 +113,30 @@ namespace BusinessLogicLib
 
 
 
-            //Console.WriteLine("Select products to add to your cart");
-            // Console.WriteLine("Enter 1 to select a product 0 to stop adding");
 
-            //string input = Console.ReadLine(); //reading user input
-
-            //int option = int.Parse(input);
-
-            Console.WriteLine("Select products to add to your cart");
+            string timeOfOrder = " ";  //a variable to hold the timestamp at which the order was made
+            Console.WriteLine("Select products to add to your cart and type placeOrder to place the order");
             while (true)
             {
-                string selectedProduct = Console.ReadLine();
+                string selectedProduct = Console.ReadLine();  //reading the user input for a selected product
 
                 Product product = new Product(selectedProduct);
 
                 cart.Add(product);  //adding the selected product to the cart
-                if(cart.Count == 5)
+                if(selectedProduct.Equals("placeOrder"))
                 {
-                    Console.WriteLine("Reached limit");
                     break;
                 }
 
-                DateTime datetime = new DateTime(); //creating a time stamp when the order was placed
-                string timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
-                Order order = new Order(selectedStore, customer, timeOfOrder, cart);
+               DateTime datetime = new DateTime(); //creating a time stamp when the order was placed
+               timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
+               Order order = new Order(selectedStore, customer, timeOfOrder, cart);
 
 
             }
+            Console.WriteLine(customer.FirstName + " " + customer.LastName);
+            Console.WriteLine($"The selected store was {selectedStore}");
+            Console.WriteLine($"The order was placed on {timeOfOrder}");
             Console.WriteLine("order placed");
 
 
