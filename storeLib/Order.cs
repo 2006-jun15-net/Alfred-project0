@@ -7,16 +7,23 @@ namespace BusinessLogicLib
     class Order
     {
         //properties
-        public Store Location { get; set; }
+        public string Location { get; set; }
 
         public Customer Customer { get; set; }
 
-        public DateTime Datetime { get; set; }
+        public string Datetime { get; set; }
 
-        public void placeOrder()
+        public List<Product> Cart { get; set; }
+
+        public Order(string location, Customer customer, string datetime, List<Product> cart)
         {
 
-            //Store location = Location.
+            this.Location = location;
+            this.Customer = customer;
+            this.Datetime = datetime;
+            this.Cart = cart;
+
+        
 
         }
     }

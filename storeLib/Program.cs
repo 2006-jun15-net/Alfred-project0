@@ -101,6 +101,47 @@ namespace BusinessLogicLib
                 }
             }
 
+            //select products from the selected store and add them in your cart
+
+            List<Product> cart = new List<Product>(); // a shopping cart for the customer
+
+            Console.WriteLine("Enter your first and last name");
+            string firstName = Console.ReadLine();
+            string lastName = Console.ReadLine();
+            Customer customer = new Customer(firstName, lastName);
+
+
+
+            //Console.WriteLine("Select products to add to your cart");
+            // Console.WriteLine("Enter 1 to select a product 0 to stop adding");
+
+            //string input = Console.ReadLine(); //reading user input
+
+            //int option = int.Parse(input);
+
+            Console.WriteLine("Select products to add to your cart");
+            while (true)
+            {
+                string selectedProduct = Console.ReadLine();
+
+                Product product = new Product(selectedProduct);
+
+                cart.Add(product);  //adding the selected product to the cart
+                if(cart.Count == 5)
+                {
+                    Console.WriteLine("Reached limit");
+                    break;
+                }
+
+                DateTime datetime = new DateTime(); //creating a time stamp when the order was placed
+                string timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
+                Order order = new Order(selectedStore, customer, timeOfOrder, cart);
+
+
+            }
+            Console.WriteLine("order placed");
+
+
 
         }
 
