@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp
-
+namespace ClassLibraryApp
 {
-    class Product
+    public class Product
     {
-
         //properties
         public string Name { get; set; }
 
@@ -16,6 +14,7 @@ namespace ConsoleApp
         {
             this.Name = name;
         }
+
 
     }
 }

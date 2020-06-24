@@ -1,12 +1,13 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp
+namespace ClassLibraryApp
 {
-    class Customer
+    public class Customer
     {
-     
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -19,3 +20,4 @@ namespace ConsoleApp
         }
     }
 }
+

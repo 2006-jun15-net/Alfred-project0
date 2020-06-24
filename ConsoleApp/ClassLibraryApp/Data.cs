@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp
+namespace ClassLibraryApp
 {
-    class Data
+    public class Data
     {
-
         public List<Customer> Customers { get; }
 
 
@@ -46,7 +45,7 @@ namespace ConsoleApp
 
             Store Kroger = new Store("London", inventory2);
 
-           
+
 
             //adding stores to the storeList
             Stores.Add(Walmart);
@@ -54,15 +53,6 @@ namespace ConsoleApp
 
 
 
-
-
-
-
-
-
-
         }
-
-
     }
 }

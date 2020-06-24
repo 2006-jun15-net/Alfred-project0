@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace ConsoleApp
+
+namespace ClassLibraryApp
 {
     class Program
     {
         //create a data storage for customers
         static List<Customer> customers = new List<Customer>();
 
-      
+
         static void Main(string[] args)
         {
-            
-       
-
+            Console.WriteLine("Hello World!");
             placeOrder();  //placing orders
-            
+
 
             /*
             //user interface
@@ -58,29 +57,28 @@ namespace ConsoleApp
  
             }
             */
-            
-            
+
+
 
         }
-
 
         //method to search customers in the system.
         public static bool searchCustomer(Customer customer)
         {
-            foreach(Customer cust in customers)
+            foreach (Customer cust in customers)
             {
-                if(customer.LastName.Equals(cust.LastName))
+                if (customer.LastName.Equals(cust.LastName))
                 {
                     return true;
 
                 }
             }
             return false;
-            
+
         }
 
         //placing an order
-       
+
         public static void placeOrder()
         {
             Console.WriteLine("Select a store from the options below:");
@@ -93,9 +91,9 @@ namespace ConsoleApp
 
             Data data = new Data();  //instatiating an object that will call a list of stores from the Data class
 
-            foreach(Store store in data.Stores)
+            foreach (Store store in data.Stores)
             {
-                if(selectedStore.Equals(store.Name))
+                if (selectedStore.Equals(store.Name))
                 {
                     //display all the products in the selected store
                     store.Inventory.ForEach(product => Console.WriteLine(product.Name));
@@ -123,14 +121,14 @@ namespace ConsoleApp
                 Product product = new Product(selectedProduct);
 
                 cart.Add(product);  //adding the selected product to the cart
-                if(selectedProduct.Equals("placeOrder"))
+                if (selectedProduct.Equals("placeOrder"))
                 {
                     break;
                 }
 
-               DateTime datetime = new DateTime(); //creating a time stamp when the order was placed
-               timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
-               Order order = new Order(selectedStore, customer, timeOfOrder, cart);
+                DateTime datetime = new DateTime(); //creating a time stamp when the order was placed
+                timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
+                Order order = new Order(selectedStore, customer, timeOfOrder, cart);
 
 
             }
@@ -147,7 +145,7 @@ namespace ConsoleApp
         public static void display()
         {
             Data data = new Data();
-            foreach(Store store in data.Stores)
+            foreach (Store store in data.Stores)
             {
                 Console.WriteLine(store.Name);
 

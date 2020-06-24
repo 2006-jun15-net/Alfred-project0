@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp
+namespace ClassLibraryApp
 {
-    class Order
+    public class Order
     {
         //properties
         public string Location { get; set; }
@@ -23,7 +23,7 @@ namespace ConsoleApp
             this.Datetime = datetime;
             this.Cart = cart;
 
-        
+
 
         }
     }
