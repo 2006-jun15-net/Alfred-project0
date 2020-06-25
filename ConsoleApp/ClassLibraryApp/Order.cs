@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClassLibraryApp
 {
-    public class Order
+    public class Order : IDisplay
     {
         //properties
         public string Location { get; set; }
@@ -26,5 +26,21 @@ namespace ClassLibraryApp
 
 
         }
+
+        public void display()
+        {
+            Console.WriteLine("The order was placed");
+            Console.WriteLine("Order Details");
+            Console.WriteLine($"Customer's full name; {Customer.FirstName} {Customer.LastName}");
+            Console.WriteLine($"Location were the order was placed: {Location}");
+            Console.WriteLine($"The order was the following products");
+            Cart.ForEach(product => Console.WriteLine(product.Name));
+            Console.WriteLine($"The order was placed on {DateTime.Now.ToString()}");
+
+
+
+        }
+
+
     }
 }
