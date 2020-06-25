@@ -1,49 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+
 
 
 namespace ClassLibraryApp
 {
     class Program
     {
-        //create a data storage for customers
-        static List<Customer> customers = new List<Customer>();
-
+     
 
         static void Main(string[] args)
         {
-            addNewCustomer();
+            //addNewCustomer();
             //placeOrder();  //placing orders
+          
+            while (true)
+            {
+                Console.WriteLine("Press: 1 to add new customer\n       2 to place an order");
+                string option = Console.ReadLine();
+                int num = int.Parse(option);
+
+                switch(num)
+                {
+                    case 1:
+                        addNewCustomer();
+                        break;
+
+                    case 2:
+                        placeOrder();
+                        break;
+
+                    case 3:
+                        break;
+
+
+
+                }
+
+
+            }
+           
         }
 
+
+
+        /// <summary>
+        /// This method adds a new customer in the system
+        /// </summary>
         static void addNewCustomer()
         {
-        
-           //user interface
-           //entering customers in the system
-           while (true)
+            Data data = new Data();  // a data object to acccess the Customer list
+            while (true)
            {
-               Console.WriteLine("welcome to the store application. Enter 1 to add new customer, 0 to stopping adding or 3 to search a customer");
+               Console.WriteLine("welcome to the store application. Enter 1 to add new customer, 0 to stopping adding");
                string input = Console.ReadLine();
                int option = int.Parse(input);
                if(option == 1)
                {
                    Console.WriteLine("Enter your first and last name");
 
-                   string firstNmae = Console.ReadLine();
+                   string firstName = Console.ReadLine();
                    string lastName = Console.ReadLine();
 
                    //creating a customer object
-                   Customer customer = new Customer(firstNmae, lastName);
+                   Customer customer = new Customer(firstName, lastName);
+                   
 
                    //adding customers in the storage, if the customer is not in the system, go ahead and add them, otherwise they
                    //are already in the system.
                    if(searchCustomer(customer) == false)
                    {
-                       customers.Add(customer);
+                     
+               
+                        data.Customers.Add(customer);
 
-                   }
+                    }
                    else
                    {
                        Console.WriteLine("Customer already in the system");
@@ -58,18 +89,28 @@ namespace ClassLibraryApp
                }
 
            }
+
+            data.Customers.ForEach(customer => Console.WriteLine(customer.LastName));
            
 
         }
 
-        //method to search customers in the system.
+        /// <summary>
+        /// This methods search a customer in the system. Returns true if the customer in the system otherwise false.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns bool ></returns>
         public static bool searchCustomer(Customer customer)
         {
-            foreach (Customer cust in customers)
+            Data data = new Data(); // data object to access the Customer list
+            foreach (Customer cust in data.Customers)
             {
                 if (customer.LastName.Equals(cust.LastName))
                 {
+                    Console.WriteLine($"{customer.FirstName} {customer.LastName} is in the system");
                     return true;
+
+
 
                 }
             }
@@ -77,8 +118,10 @@ namespace ClassLibraryApp
 
         }
 
-        //placing an order
-
+        
+        /// <summary>
+        /// This method places the order
+        /// </summary>
         public static void placeOrder()
         {
             Console.WriteLine("Select a store from the options below:");
@@ -96,7 +139,7 @@ namespace ClassLibraryApp
                 if (selectedStore.Equals(store.Name))
                 {
                     //display all the products in the selected store
-                    store.Inventory.ForEach(product => Console.WriteLine(product.Name));
+                    store.Inventory.ForEach(product => product.display());  //displays the the products
                 }
             }
 
@@ -126,15 +169,17 @@ namespace ClassLibraryApp
                     break;
                 }
 
-                timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
-                Order order = new Order(selectedStore, customer, timeOfOrder, cart);
-
+               
 
             }
-            Console.WriteLine(customer.FirstName + " " + customer.LastName);
-            Console.WriteLine($"The selected store was {selectedStore}");
-            Console.WriteLine($"The order was placed on {timeOfOrder}");
-            Console.WriteLine("order placed");
+            timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
+            Order order = new Order(selectedStore, customer, timeOfOrder, cart);
+            order.display();
+
+            //Console.WriteLine(customer.FirstName + " " + customer.LastName);
+            //Console.WriteLine($"The selected store was {selectedStore}");
+            //Console.WriteLine($"The order was placed on {timeOfOrder}");
+            //Console.WriteLine("order placed");
 
 
 
