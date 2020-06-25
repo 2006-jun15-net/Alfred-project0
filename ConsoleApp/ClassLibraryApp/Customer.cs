@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ClassLibraryApp
 {
+    /// <summary>
+    /// This class holds the first and last name of the customer
+    /// </summary>
     public class Customer
     {
 

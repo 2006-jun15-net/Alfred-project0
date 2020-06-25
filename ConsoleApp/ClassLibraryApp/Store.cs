@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ClassLibraryApp
 {
+    /// <summary>
+    /// This class holds infromation pertaining to a store
+    /// </summary>
     public class Store
     {
         public string Name { get; set; }

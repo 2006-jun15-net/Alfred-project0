@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ClassLibraryApp
 {
+    /// <summary>
+    /// This class holds data objects of some classes
+    /// </summary>
     public class Data
     {
         public List<Customer> Customers { get; }
@@ -13,6 +16,11 @@ namespace ClassLibraryApp
 
         public Data()
         {
+
+            //initializing Customer list
+            this.Customers = new List<Customer>();
+
+
             //initializing a store list
             this.Stores = new List<Store>();
 

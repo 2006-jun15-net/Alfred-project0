@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ClassLibraryApp
 {
+    /// <summary>
+    /// This class holds information pertaining the order.
+    /// </summary>
     public class Order : IDisplay
     {
         //properties
@@ -26,7 +29,9 @@ namespace ClassLibraryApp
 
 
         }
-
+        /// <summary>
+        /// This method displays order details. It implements display method from IDisplay interface
+        /// </summary>
         public void display()
         {
             Console.WriteLine("The order was placed");
