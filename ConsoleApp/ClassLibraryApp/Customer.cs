@@ -15,11 +15,14 @@ namespace ClassLibraryApp
 
         public string LastName { get; set; }
 
+        public List<Order> Orders { get; set; }
+
 
         public Customer(string firstName, string lastName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.Orders = new List<Order>();
         }
     }
 }
