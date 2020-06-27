@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace ClassLibraryApp
 {
-    class Functionality
+   
+    public class Functionality
     {
+        public static List<Customer> Customers = new List<Customer>();
+
         public Functionality()
         {
-
+           
         }
+        
+       
+
+        
+        
 
         /// <summary>
         /// This method adds a new customer in the system
         /// </summary>
+        
+        
 
-        Data data = new Data();  // a data object to acccess the Customer list
+        //List<Customer> Customers = new List<Customer>();
+        
         public void addNewCustomer()
         {
-            
+
             while (true)
             {
                 Console.WriteLine("Enter 1 to add new customer, 0 to stopping adding");
@@ -39,7 +51,7 @@ namespace ClassLibraryApp
 
                     //adding customers in the storage, if the customer is not in the system, go ahead and add them, otherwise they
                     //are already in the system.
-                    data.Customers.Add(customer);
+                    Customers.Add(customer);
                     /*
                     if (searchCustomer(customer) == false)
                    {
@@ -62,34 +74,40 @@ namespace ClassLibraryApp
                     break;
                 }
 
-            }
-            
+            }Console.WriteLine($"The current number of customers is {Customers.Count}");
+            Customers.ForEach(customer => Console.WriteLine(customer));
+
 
             //data.Customers.ForEach(customer => Console.WriteLine(customer.LastName));
 
 
         }
+        
+
 
         /// <summary>
         /// This methods search a customer in the system. Returns true if the customer in the system otherwise false.
         /// </summary>
 
-        public  void searchCustomer()
+        
+        public bool searchCustomer()
         {
-           
+
             Console.WriteLine("Enter customer's first name");
             string inputfirstName = Console.ReadLine();  // first name
             Console.WriteLine("Enter customer's last name");
             string inputLastName = Console.ReadLine();   // last name
-            foreach (Customer cust in data.Customers)
+            foreach (Customer cust in Customers)
             {
                 if (inputfirstName.Equals(cust.FirstName) && inputLastName.Equals(cust.LastName))
                 {
                     Console.WriteLine($"{inputfirstName} {inputLastName} is in the system");
+                    return true;
 
                 }
 
-            }
+            }Console.WriteLine($"{inputfirstName} {inputLastName} is not in the system");
+            return false;
 
         }
 
@@ -97,7 +115,8 @@ namespace ClassLibraryApp
         /// <summary>
         /// This method places the order
         /// </summary>
-        public  void placeOrder()
+       
+        public void placeOrder()
         {
             Console.WriteLine("Select a store from the options below:");
             Console.WriteLine();
@@ -146,43 +165,33 @@ namespace ClassLibraryApp
                                     //removing product from the store after being selected
                                     //placeOrder = true
 
-                if(cart.Count == 50)  //limit quantity of products that the cart should have.
+                if (cart.Count == 50)  //limit quantity of products that the cart should have.
                 {
                     Console.WriteLine("Reached limit. Press 1 to remove a product");
                     int input = int.Parse(Console.ReadLine());
 
                     Console.WriteLine("Enter a product to remove:");
                     string prod = Console.ReadLine();
-                    if(input == 1)
+                    if (input == 1)
                     {
-                        foreach(Product cartprod in cart.ToList())
+                        foreach (Product cartprod in cart.ToList())
                         {
-                            if(cartprod.Name.Equals(prod))
+                            if (cartprod.Name.Equals(prod))
                             {
                                 cart.Remove(cartprod);
-                               
-                            }break; 
+
+                            }
+                            break;
                         }
 
-                        
+
 
                     }
-                    
+
                     break;
 
                 }
-                //removing selected products from the selected store
-                foreach (Store store in data.Stores)
-                {
-                    if (selectedStore.Equals(store.Name))
-                    {
-                        store.remove(product);
-                        
-                        
-                    }
-                    
 
-                }
                 //Console.WriteLine(store.Inventory.Count);
 
 
@@ -192,8 +201,8 @@ namespace ClassLibraryApp
                     break;
                 }
 
-               
-                    
+
+
 
 
 
@@ -212,7 +221,8 @@ namespace ClassLibraryApp
         }
 
         //displaying store locations
-        public  void display()
+        
+        public void display()
         {
             Data data = new Data();
             foreach (Store store in data.Stores)
@@ -224,14 +234,20 @@ namespace ClassLibraryApp
 
         }
 
-        public void displayOrders()
+         
+
+
+        /*public void displayOrders()
         {
             Console.WriteLine("Enter customer's first and last name");
             string firstName = Console.ReadLine();
             string lastName = Console.ReadLine();
             Customer customer = new Customer(firstName, lastName);
             customer.display();
-        }
+        }*/
+        
+
+
 
     }
 
