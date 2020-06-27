@@ -22,11 +22,7 @@ namespace ClassLibraryApp
 
         }
 
-        //removing the product
-        public void remove(Product product)
-        {
-            Inventory.Remove(product);
-        }
+       
 
     }
 }

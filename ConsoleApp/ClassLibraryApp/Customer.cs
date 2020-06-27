@@ -8,7 +8,7 @@ namespace ClassLibraryApp
     /// <summary>
     /// This class holds the first and last name of the customer
     /// </summary>
-    public class Customer : IDisplay
+    public class Customer
     {
 
         public string FirstName { get; set; }
@@ -26,7 +26,7 @@ namespace ClassLibraryApp
         }
 
         //displaying a customer's orders
-        public void display()
+       /* public void display()
         {
             for(int i = 0; i < Orders.Count; i++)
             {
@@ -35,7 +35,7 @@ namespace ClassLibraryApp
             }
             
 
-        }
+        }*/
         
     }
 }

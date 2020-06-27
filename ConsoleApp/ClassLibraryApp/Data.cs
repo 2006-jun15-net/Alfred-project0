@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace ClassLibraryApp
 {
     /// <summary>
@@ -9,16 +10,11 @@ namespace ClassLibraryApp
     /// </summary>
     public class Data
     {
-        public List<Customer> Customers { get; }
-
-
+      
         public List<Store> Stores { get; set; }
 
         public Data()
         {
-
-            //initializing Customer list
-            this.Customers = new List<Customer>();
 
 
             //initializing a store list
@@ -62,5 +58,8 @@ namespace ClassLibraryApp
 
 
         }
+
+        
+
     }
 }
