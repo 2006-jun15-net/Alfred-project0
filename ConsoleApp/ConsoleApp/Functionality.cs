@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ClassLibraryApp
@@ -26,9 +27,10 @@ namespace ClassLibraryApp
                 int option = int.Parse(input);
                 if (option == 1)
                 {
-                    Console.WriteLine("Enter your first and last name");
-
+                    Console.WriteLine("Enter your first name");
                     string firstName = Console.ReadLine();
+
+                    Console.WriteLine("Enter your last name");
                     string lastName = Console.ReadLine();
 
                     //creating a customer object
@@ -61,8 +63,9 @@ namespace ClassLibraryApp
                 }
 
             }
+            
 
-            data.Customers.ForEach(customer => Console.WriteLine(customer.LastName));
+            //data.Customers.ForEach(customer => Console.WriteLine(customer.LastName));
 
 
         }
@@ -82,7 +85,7 @@ namespace ClassLibraryApp
             {
                 if (inputfirstName.Equals(cust.FirstName) && inputLastName.Equals(cust.LastName))
                 {
-                    Console.WriteLine($"{inputfirstName} {inputLastName} is added in the system");
+                    Console.WriteLine($"{inputfirstName} {inputLastName} is in the system");
 
                 }
 
@@ -132,6 +135,7 @@ namespace ClassLibraryApp
 
             string timeOfOrder = " ";  //a variable to hold the timestamp at which the order was made
             Console.WriteLine("Select products to add to your cart and type placeOrder to place the order");
+            //bool placeOrder = false;
             while (true)
             {
                 string selectedProduct = Console.ReadLine();  //reading the user input for a selected product
@@ -140,11 +144,58 @@ namespace ClassLibraryApp
                 Product product = new Product(selectedProduct);
                 cart.Add(product);  //adding the selected product to the cart
                                     //removing product from the store after being selected
+                                    //placeOrder = true
+
+                if(cart.Count == 50)  //limit quantity of products that the cart should have.
+                {
+                    Console.WriteLine("Reached limit. Press 1 to remove a product");
+                    int input = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Enter a product to remove:");
+                    string prod = Console.ReadLine();
+                    if(input == 1)
+                    {
+                        foreach(Product cartprod in cart.ToList())
+                        {
+                            if(cartprod.Name.Equals(prod))
+                            {
+                                cart.Remove(cartprod);
+                               
+                            }break; 
+                        }
+
+                        
+
+                    }
+                    
+                    break;
+
+                }
+                //removing selected products from the selected store
+                foreach (Store store in data.Stores)
+                {
+                    if (selectedStore.Equals(store.Name))
+                    {
+                        store.remove(product);
+                        
+                        
+                    }
+                    
+
+                }
+                //Console.WriteLine(store.Inventory.Count);
+
+
 
                 if (selectedProduct.Equals("placeOrder"))
                 {
                     break;
                 }
+
+               
+                    
+
+
 
 
 
@@ -152,6 +203,7 @@ namespace ClassLibraryApp
             timeOfOrder = DateTime.Now.ToString(); //creating a time stamp when the order was placed
             Order order = new Order(selectedStore, customer, timeOfOrder, cart);
             customer.Orders.Add(order); //adding orders to a customer's list
+            Console.WriteLine("------------------------------------------------");
             order.display();
 
 
@@ -170,6 +222,15 @@ namespace ClassLibraryApp
             }
 
 
+        }
+
+        public void displayOrders()
+        {
+            Console.WriteLine("Enter customer's first and last name");
+            string firstName = Console.ReadLine();
+            string lastName = Console.ReadLine();
+            Customer customer = new Customer(firstName, lastName);
+            customer.display();
         }
 
     }

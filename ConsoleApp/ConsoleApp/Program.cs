@@ -11,9 +11,11 @@ namespace ClassLibraryApp
 
         static void Main(string[] args)
         {
-            //addNewCustomer();
-            //placeOrder();  //placing orders
-            Functionality functionality = new Functionality();
+
+            Functionality func = new Functionality();
+            func.displayOrders();
+            
+           /* Functionality functionality = new Functionality();
 
             Console.WriteLine("welcome to the store application");
             bool choice = false;
@@ -40,6 +42,12 @@ namespace ClassLibraryApp
                         break;
 
                     case 4:
+                        functionality.displayOrders();
+                        break;
+
+
+
+                    case 5:
                         choice = true; //quiting from the store application
                         break;
                  
@@ -47,6 +55,7 @@ namespace ClassLibraryApp
 
 
                 }
+           */
 
 
             }
@@ -57,4 +66,4 @@ namespace ClassLibraryApp
 
       
     }
-}
+
