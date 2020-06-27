@@ -40,6 +40,7 @@ namespace ClassLibraryApp
             Console.WriteLine($"Location were the order was placed: {Location}");
             Console.WriteLine($"The order was the following products");
             Cart.ForEach(product => Console.WriteLine(product.Name));
+            Console.WriteLine($"The order has {Cart.Count} products");
             Console.WriteLine($"The order was placed on {DateTime.Now.ToString()}");
 
 

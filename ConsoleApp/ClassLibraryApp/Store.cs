@@ -18,7 +18,15 @@ namespace ClassLibraryApp
         {
             this.Name = name;
             this.Inventory = inventory;
+            
 
         }
+
+        //removing the product
+        public void remove(Product product)
+        {
+            Inventory.Remove(product);
+        }
+
     }
 }
