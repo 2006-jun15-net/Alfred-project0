@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 
 
@@ -10,6 +11,14 @@ namespace ClassLibraryApp
 {
     class Program
     {
+
+        public static readonly ILoggerFactory MyLoggerFactory
+           = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
+       /* public static readonly DbContextOptions<ChinookContext> Options = new DbContextOptionsBuilder<ChinookContext>()
+            .UseLoggerFactory(MyLoggerFactory)
+            .UseSqlServer(SecretConfiguration.ConnectionString)
+            .Options;*/
 
 
         static void Main(string[] args)
@@ -31,31 +40,49 @@ namespace ClassLibraryApp
                 Console.WriteLine("Press:\n 1 to add new customer\n 2 to place an order\n 3 to search a customer" +
                                    "\n 4 to quit the store system");
                 string option = Console.ReadLine();
-                int num = int.Parse(option);
-
-                switch (num)
+                int num = 0;
+                try
                 {
-                    case 1:
-                        functionality.addNewCustomer();
-                        break;
+                    num = int.Parse(option);
 
-                    case 2:
-                        functionality.placeOrder();
-                        break;
+                }
+                catch(FormatException)
+                {
+                    Console.WriteLine("Please try again. bAttempted to use wrong input character.");
+                    Console.WriteLine("Press numbers 1-4 to make your selection");
 
-                    case 3:
-                        functionality.searchCustomer();
-                        break;
+                }
+                finally
+                {
+                    switch (num)
+                    {
+                        case 1:
+                            functionality.addNewCustomer();
+                            break;
 
-                   
-                    case 4:
-                        choice = true; //quiting from the store application
-                        break;
+                        case 2:
+                            functionality.placeOrder();
+                            break;
+
+                        case 3:
+                            functionality.searchCustomer();
+                            break;
 
 
+                        case 4:
+                            choice = true; //quiting from the store application
+                            break;
+
+
+
+
+                    }
 
 
                 }
+
+
+
 
 
 
