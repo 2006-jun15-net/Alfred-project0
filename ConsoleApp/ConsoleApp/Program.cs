@@ -4,6 +4,9 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
+using ConsoleApp.DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
+using ConsoleApp;
 
 
 
@@ -15,10 +18,10 @@ namespace ClassLibraryApp
         public static readonly ILoggerFactory MyLoggerFactory
            = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
-       /* public static readonly DbContextOptions<ChinookContext> Options = new DbContextOptionsBuilder<ChinookContext>()
+        public static readonly DbContextOptions<storeApplicationContext> Options = new DbContextOptionsBuilder<storeApplicationContext>()
             .UseLoggerFactory(MyLoggerFactory)
             .UseSqlServer(SecretConfiguration.ConnectionString)
-            .Options;*/
+            .Options;
 
 
         static void Main(string[] args)
