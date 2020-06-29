@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestConsoleApp", "XUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.DataAccess", "ConsoleApp.DataAccess\ConsoleApp.DataAccess.csproj", "{669C8821-CFA1-4E26-A99C-6E592DC784B2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED72069B-F7DE-49A4-9A93-19B7FF1302D3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore.txt = .gitignore.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
