@@ -197,7 +197,9 @@ namespace ClassLibraryApp
 
 
                 if (selectedProduct.Equals("placeOrder"))
+
                 {
+                    cart.RemoveAt(cart.Count - 1);
                     break;
                 }
 
