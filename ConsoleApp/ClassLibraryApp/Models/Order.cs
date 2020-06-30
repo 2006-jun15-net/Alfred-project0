@@ -16,6 +16,10 @@ namespace ClassLibraryApp
 
         public string Datetime { get; set; }
 
+        public int OrderId { get; set; }
+
+        public int CustId { get; set; }
+
         public List<Product> Cart { get; set; }
 
         public Order(string location, Customer customer, string datetime, List<Product> cart)

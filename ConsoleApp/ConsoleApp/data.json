@@ -1,1 +1,1 @@
-{"Stores":[{"Name":"New York","Inventory":[{"Name":"milk"},{"Name":"bananas"},{"Name":"brocolli"},{"Name":"yogurt"}]},{"Name":"London","Inventory":[{"Name":"liver"},{"Name":"fish"},{"Name":"beef"},{"Name":"chicken"}]}]}
+{"Stores":[{"Name":"New York","Inventory":[{"ProdId":0,"Name":"milk"},{"ProdId":0,"Name":"bananas"},{"ProdId":0,"Name":"brocolli"},{"ProdId":0,"Name":"yogurt"}]},{"Name":"London","Inventory":[{"ProdId":0,"Name":"liver"},{"ProdId":0,"Name":"fish"},{"ProdId":0,"Name":"beef"},{"ProdId":0,"Name":"chicken"}]}]}

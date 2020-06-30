@@ -11,9 +11,13 @@ namespace ClassLibraryApp
     public class Customer
     {
 
+        public int CustId { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public char sex { get; set; }
 
         public List<Order> Orders { get; set; }
 

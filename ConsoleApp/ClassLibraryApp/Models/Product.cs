@@ -10,7 +10,10 @@ namespace ClassLibraryApp
     public class Product : IDisplay
     {
         //properties
+        public int ProdId { get; set; } //ProdID to match the Product entity.
         public string Name { get; set; }
+
+
 
         //Constructor 
         public Product(string name)

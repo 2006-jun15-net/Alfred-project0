@@ -137,6 +137,8 @@ namespace ClassLibraryApp
                     Console.WriteLine("This store has the following products:");
                     //display all the products in the selected store
                     store.Inventory.ForEach(product => product.display());  //displays the products
+                    
+
                 }
             }
 

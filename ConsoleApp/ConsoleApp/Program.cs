@@ -7,8 +7,7 @@ using Microsoft.Extensions.Logging;
 using ConsoleApp.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using ConsoleApp;
-
-
+using ConsoleApp.DataAccess.Repositories;
 
 namespace ClassLibraryApp
 {
@@ -60,7 +59,8 @@ namespace ClassLibraryApp
                     switch (num)
                     {
                         case 1:
-                            functionality.addNewCustomer();
+                            //functionality.addNewCustomer();
+                            CustomerRepository.Add();
                             break;
 
                         case 2:
@@ -68,7 +68,8 @@ namespace ClassLibraryApp
                             break;
 
                         case 3:
-                            functionality.searchCustomer();
+                            //functionality.searchCustomer();
+                            CustomerRepository.searchCustomer();
                             break;
 
 

@@ -36,11 +36,9 @@ namespace ConsoleApp.DataAccess.Entities
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustId)
-                    .HasName("PK__Customer__9725F2E68AA5D3F8");
+                    .HasName("PK__Customer__9725F2E6D04323F5");
 
-                entity.Property(e => e.CustId)
-                    .HasColumnName("custID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.CustId).HasColumnName("custID");
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
@@ -72,13 +70,13 @@ namespace ConsoleApp.DataAccess.Entities
                     .WithMany()
                     .HasForeignKey(d => d.ProdId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__ProdI__5BE2A6F2");
+                    .HasConstraintName("FK__Inventory__ProdI__6D0D32F4");
 
                 entity.HasOne(d => d.Store)
                     .WithMany()
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Store__5AEE82B9");
+                    .HasConstraintName("FK__Inventory__Store__6C190EBB");
             });
 
             modelBuilder.Entity<OrderDetails>(entity =>
@@ -99,23 +97,21 @@ namespace ConsoleApp.DataAccess.Entities
                     .WithMany()
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order_Det__Order__5441852A");
+                    .HasConstraintName("FK__Order_Det__Order__656C112C");
 
                 entity.HasOne(d => d.Prod)
                     .WithMany()
                     .HasForeignKey(d => d.ProdId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order_Det__ProdI__5535A963");
+                    .HasConstraintName("FK__Order_Det__ProdI__66603565");
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BAFAF2AFE8C");
+                    .HasName("PK__Orders__C3905BAFBD2E6C20");
 
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("OrderID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.CustId).HasColumnName("CustID");
 
@@ -123,17 +119,15 @@ namespace ConsoleApp.DataAccess.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__CustID__5165187F");
+                    .HasConstraintName("FK__Orders__CustID__628FA481");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ProdId)
-                    .HasName("PK__Product__042785C5C68A1487");
+                    .HasName("PK__Product__042785C50BADE1E1");
 
-                entity.Property(e => e.ProdId)
-                    .HasColumnName("ProdID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ProdId).HasColumnName("ProdID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -142,9 +136,7 @@ namespace ConsoleApp.DataAccess.Entities
 
             modelBuilder.Entity<Store>(entity =>
             {
-                entity.Property(e => e.StoreId)
-                    .HasColumnName("StoreID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
 
                 entity.Property(e => e.Location)
                     .IsRequired()
@@ -156,7 +148,7 @@ namespace ConsoleApp.DataAccess.Entities
                     .WithMany(p => p.Store)
                     .HasForeignKey(d => d.ProdId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Store__ProdID__5812160E");
+                    .HasConstraintName("FK__Store__ProdID__693CA210");
             });
 
             OnModelCreatingPartial(modelBuilder);
