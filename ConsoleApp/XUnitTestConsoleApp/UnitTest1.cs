@@ -1,61 +1,89 @@
 using System;
 using Xunit;
-using System.Collections.Generic;
-using ClassLibraryApp;
+using ConsoleApp.DataAccess.Entities;
+using System.Linq;
+using Xunit.Sdk;
 
-
-
-
-
-
-namespace ConsoleAapp
+namespace XUnitTestConsoleApp
 {
     public class UnitTest1
     {
        
-        
-
-        List<Customer> customers = new List<Customer>();
-
+        /// <summary>
+        /// Test the number of customers in the system.
+        /// </summary>
        
        [Fact]
         public void TestNumberOfCustomers()
         {
-            Functionality functionality = new Functionality();
+          
+            using (var dbContext = new storeApplicationContext())
 
-            //creating creating to add to the list
-            Customer customer1 = new Customer("Alfred", "Rwagaju");
-            Customer customer2 = new Customer("Marcus", "Rashford");
-            Customer customer3 = new Customer("Gabriel", "Jesus");
-            Customer customer4 = new Customer("Mane", "Sadio");
-            Customer customer5 = new Customer("Christian", "Pullisic");
-            Customer customer6 = new Customer("Jose", "Mourinho");
+            { 
+                int numOfCustomer  = dbContext.Customer.Count();
+                Assert.Equal(expected: 9, actual: numOfCustomer);
 
-            //adding the csutomers to the list
-            customers.Add(customer1);
-            customers.Add(customer2);
-            customers.Add(customer3);
-            customers.Add(customer4);
-            customers.Add(customer5);
-            customers.Add(customer6);
+            }
 
-            Assert.Equal(expected: 6, actual: customers.Count);
-            
+        }
+
+        [Fact]
+        public void TestNumberProducts()
+        {
+            using (var dbContext = new storeApplicationContext())
+            {
+                int numOfProducts = dbContext.Product.Count();
+                Assert.Equal(expected: 8, actual: numOfProducts);
+            }
+           
+
+        }
+
+        /// <summary>
+        /// Test the number of stores in the system.
+        /// </summary>
+
+        [Fact]
+        public void TestNumberOfStores()
+        {
+            using (var dbContext = new storeApplicationContext())
+            {
+                int numOfStores = dbContext.Store.Count();
+                Assert.Equal(expected: 7, actual: numOfStores);
 
 
 
+            }
 
+        }
 
+        /// <summary>
+        /// Test the existence of a particular customer in the system.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
 
+        [Theory]
+        [InlineData("yimenez", "gomez")]
+        [InlineData("alfred","rwagaju")]
+        [InlineData("Jacob", "Smith")]
+        [InlineData("Michael", "Madison")]
+        [InlineData("Ethan", "Elizabeth")]
+        [InlineData("Diana", "McCarthy")]
+        [InlineData("alfred", "lioneli")]
+        public void searchCustomer(string firstName, string lastName)
+        {
+            using (var dbContext = new storeApplicationContext())
+            {
+                foreach (var customer in dbContext.Customer)
+                {
+                    if (customer.FirstName.Equals(firstName) && customer.LastName.Equals(lastName))
+                    {
+                        Assert.Equal($"{firstName} {lastName}", $"{customer.FirstName} {customer.LastName}");
+                    }
+                }
 
-
-
-
-
-
-
-
-
+            }
 
         }
     }

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryApp\ClassLibraryApp.csproj" />
+    <ProjectReference Include="..\ConsoleApp.DataAccess\ConsoleApp.DataAccess.csproj" />
     <ProjectReference Include="..\ConsoleApp\ConsoleApp.csproj" />
   </ItemGroup>
 
