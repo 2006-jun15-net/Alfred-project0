@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ClassLibraryApp.Interfaces;
 namespace ConsoleApp.DataAccess.Repositories
 { 
     public  static class CustomerRepository
 
     {
+        /// <summary>
+        /// adds a customer to the system.
+        /// </summary>
         public static void Add()
         {
             using(var dbContext = new storeApplicationContext())
@@ -26,10 +28,13 @@ namespace ConsoleApp.DataAccess.Repositories
                 
                 dbContext.Add(customer);
                 dbContext.SaveChanges();
-            }
+            }Console.WriteLine("Successfully entered the customer in the system");
         }
 
-        //searching a customer in the system
+        /// <summary>
+        /// A void method that searches a customer in the system
+        /// </summary>
+        /// <returns></returns>
         public static bool searchCustomer()
         {
             using (var dbContext = new storeApplicationContext())
