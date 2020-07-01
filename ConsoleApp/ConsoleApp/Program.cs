@@ -13,9 +13,15 @@ namespace ClassLibraryApp
 {
     class Program
     {
-
+        /// <summary>
+        /// Confugures the logging system
+        /// </summary>
         public static readonly ILoggerFactory MyLoggerFactory
            = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
+        /// <summary>
+        /// Connects to the SQL server
+        /// </summary>
 
         public static readonly DbContextOptions<storeApplicationContext> Options = new DbContextOptionsBuilder<storeApplicationContext>()
             .UseLoggerFactory(MyLoggerFactory)
@@ -41,49 +47,65 @@ namespace ClassLibraryApp
 
                 Console.WriteLine("Press:\n 1 to add new customer\n 2 to place an order\n 3 to search a customer" +
                                    "\n 4 to quit the store system");
+                Console.WriteLine("-------------------------------------------------");
                 string option = Console.ReadLine();
                 int num = 0;
-                try
-                {
-                    num = int.Parse(option);
+               
 
-                }
-                catch(FormatException)
-                {
-                    Console.WriteLine("Please try again. bAttempted to use wrong input character.");
-                    Console.WriteLine("Press numbers 1-4 to make your selection");
-
-                }
-                finally
-                {
-                    switch (num)
+                    try
                     {
-                        case 1:
-                            //functionality.addNewCustomer();
-                            CustomerRepository.Add();
-                            break;
+                        num = int.Parse(option);
 
-                        case 2:
-                            functionality.placeOrder();
-                            break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Please try again. Attempted to use wrong input character.");
+                        Console.WriteLine("Press numbers 1-4 to make your selection");
+                    Console.WriteLine("--------------------------------------------------");
 
-                        case 3:
-                            //functionality.searchCustomer();
-                            CustomerRepository.searchCustomer();
-                            break;
+                    }
+                    finally
+                    {
+                        switch (num)
+                        {
+                            case 1:
+                               
+                                CustomerRepository.Add();
+
+                               
+                                break;
+
+                            case 2:
+                                OrderRep.addOrder();
+                            
+                                break;
+
+                            case 3:
+                        
+                                CustomerRepository.searchCustomer();
+                                break;
 
 
-                        case 4:
-                            choice = true; //quiting from the store application
-                            break;
+                            case 4:
+                                choice = true; //quiting from the store application
+                                break;
 
-
+                            default:
+                                Console.WriteLine("Please try again. Attempted to use wrong input character.");
+                                Console.WriteLine("Press numbers 1-4 to make your selection");
+                                break;
 
 
                     }
 
+                       
 
-                }
+
+                    }
+
+               
+                
+
 
 
 
@@ -114,6 +136,9 @@ namespace ClassLibraryApp
 
         }
 
+        /// <summary>
+        /// This method deserializes the data
+        /// </summary>
         public static void deserialize()
         {
             Data data = new Data();  //object to deserilaze
