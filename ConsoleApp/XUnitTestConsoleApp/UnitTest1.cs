@@ -21,7 +21,7 @@ namespace XUnitTestConsoleApp
 
             { 
                 int numOfCustomer  = dbContext.Customer.Count();
-                Assert.Equal(expected: 9, actual: numOfCustomer);
+                Assert.Equal(expected: 13, actual: numOfCustomer);
 
             }
 
