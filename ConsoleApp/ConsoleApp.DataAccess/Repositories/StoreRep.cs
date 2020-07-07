@@ -7,6 +7,10 @@ using ConsoleApp.DataAccess.Entities;
 
 namespace ConsoleApp.DataAccess.Repositories
 {
+
+    /// <summary>
+    /// Repository for store class: includes a method to display all available stores 
+    /// </summary>
     public static class StoreRep
     {
         /// <summary>

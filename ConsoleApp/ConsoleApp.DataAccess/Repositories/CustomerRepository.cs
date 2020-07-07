@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 namespace ConsoleApp.DataAccess.Repositories
 { 
+
+    /// <summary>
+    /// Repository for customer class: includes methods to add a customer to the DB and search a customer by name
+    /// </summary>
     public  static class CustomerRepository
 
     {
