@@ -10,6 +10,10 @@ using System.Text;
 
 namespace ConsoleApp.DataAccess.Repositories
 {
+
+    /// <summary>
+    /// Repository for the orders: includes a method to place an order given customer input
+    /// </summary>
     public static class OrderRep
     {
        /// <summary>
